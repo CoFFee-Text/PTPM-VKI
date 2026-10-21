@@ -14,7 +14,7 @@ class TestIntegration(unittest.TestCase):
     def tearDown(self):
         self.db.close()
 
-    def test_full_scenario_saves_to_db_and_notifies(self):
+    def test_Full_Scenario_Saves_To_Db_And_Notifies(self):
         self.ui.get_input.side_effect = [3, 4, 5]
         result_type, result_coords = self.controller.process()
 
@@ -41,7 +41,7 @@ class TestIntegration(unittest.TestCase):
         count = self.db.cursor.fetchone()[0]
         self.assertEqual(count, 1, "Повторный вызов не должен создавать дубликат в БД")
 
-    def test_invalid_input_isolates_dependencies(self):
+    def test_Invalid_Input_Isolates_Dependencies(self):
         self.ui.get_input.side_effect = [None, 5, 5]
 
         result_type, result_coords = self.controller.process()
